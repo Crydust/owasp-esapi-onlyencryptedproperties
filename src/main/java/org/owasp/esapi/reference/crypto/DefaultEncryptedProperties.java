@@ -28,6 +28,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.owasp.esapi.ESAPI;
+import org.owasp.esapi.Encryptor;
 import org.owasp.esapi.Logger;
 import org.owasp.esapi.crypto.CipherText;
 import org.owasp.esapi.crypto.PlainText;
@@ -51,6 +52,7 @@ import org.owasp.esapi.errors.EncryptionException;
  * @see org.owasp.esapi.EncryptedProperties
  * @see org.owasp.esapi.reference.crypto.ReferenceEncryptedProperties
  */
+@Deprecated
 public class DefaultEncryptedProperties implements org.owasp.esapi.EncryptedProperties {
 
 	/** The properties. */

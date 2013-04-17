@@ -19,7 +19,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import junit.framework.JUnit4TestAdapter;
 import org.junit.After;
 import org.junit.Before;

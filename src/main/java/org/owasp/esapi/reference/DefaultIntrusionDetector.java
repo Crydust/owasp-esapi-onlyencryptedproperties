@@ -22,7 +22,7 @@ import java.util.Stack;
 
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.Logger;
-import org.owasp.esapi.User;
+//import org.owasp.esapi.User;
 import org.owasp.esapi.SecurityConfiguration.Threshold;
 import org.owasp.esapi.errors.EnterpriseSecurityException;
 import org.owasp.esapi.errors.IntrusionException;
@@ -68,7 +68,7 @@ public class DefaultIntrusionDetector implements org.owasp.esapi.IntrusionDetect
         }
 
         // add the exception to the current user, which may trigger a detector 
-		User user = ESAPI.authenticator().getCurrentUser();
+//		User user = ESAPI.authenticator().getCurrentUser();
         String eventName = e.getClass().getName();
 
         if ( e instanceof IntrusionException) {
@@ -77,7 +77,7 @@ public class DefaultIntrusionDetector implements org.owasp.esapi.IntrusionDetect
         
         // add the exception to the user's store, handle IntrusionException if thrown
 		try {
-			addSecurityEvent(user, eventName);
+//			addSecurityEvent(user, eventName);
 		} catch( IntrusionException ex ) {
             Threshold quota = ESAPI.securityConfiguration().getQuota(eventName);
             Iterator i = quota.actions.iterator();
@@ -98,9 +98,9 @@ public class DefaultIntrusionDetector implements org.owasp.esapi.IntrusionDetect
         logger.warning( Logger.SECURITY_FAILURE, "Security event " + eventName + " received : " + logMessage );
 
         // add the event to the current user, which may trigger a detector 
-        User user = ESAPI.authenticator().getCurrentUser();
+//        User user = ESAPI.authenticator().getCurrentUser();
         try {
-            addSecurityEvent(user, "event." + eventName);
+//            addSecurityEvent(user, "event." + eventName);
         } catch( IntrusionException ex ) {
             Threshold quota = ESAPI.securityConfiguration().getQuota("event." + eventName);
             Iterator i = quota.actions.iterator();
@@ -127,15 +127,15 @@ public class DefaultIntrusionDetector implements org.owasp.esapi.IntrusionDetect
         if ( action.equals( "log" ) ) {
             logger.fatal( Logger.SECURITY_FAILURE, "INTRUSION - " + message );
         }
-        User user = ESAPI.authenticator().getCurrentUser();
-        if (user == User.ANONYMOUS)
-        	return;
-        if ( action.equals( "disable" ) ) {
-            user.disable();
-        }
-        if ( action.equals( "logout" ) ) {
-            user.logout();
-        }
+//        User user = ESAPI.authenticator().getCurrentUser();
+//        if (user == User.ANONYMOUS)
+//        	return;
+//        if ( action.equals( "disable" ) ) {
+//            user.disable();
+//        }
+//        if ( action.equals( "logout" ) ) {
+//            user.logout();
+//        }
     }
 
 	 /**
@@ -147,25 +147,25 @@ public class DefaultIntrusionDetector implements org.owasp.esapi.IntrusionDetect
 	 * @param eventName
 	 * 			The name of the event that occurred.
 	 */
-	private void addSecurityEvent(User user, String eventName) {
-		if (ESAPI.securityConfiguration().getDisableIntrusionDetection()) return;
-		
-		if ( user.isAnonymous() ) return;
-		
-		HashMap eventMap = user.getEventMap();
-		
-		// if there is a threshold, then track this event
-		Threshold threshold = ESAPI.securityConfiguration().getQuota( eventName );
-		if ( threshold != null ) {
-			Event event = (Event)eventMap.get( eventName );
-			if ( event == null ) {
-				event = new Event( eventName );
-				eventMap.put( eventName, event );
-			}
-			// increment
-			event.increment(threshold.count, threshold.interval);
-		}
-	}
+//	private void addSecurityEvent(User user, String eventName) {
+//		if (ESAPI.securityConfiguration().getDisableIntrusionDetection()) return;
+//		
+//		if ( user.isAnonymous() ) return;
+//		
+//		HashMap eventMap = user.getEventMap();
+//		
+//		// if there is a threshold, then track this event
+//		Threshold threshold = ESAPI.securityConfiguration().getQuota( eventName );
+//		if ( threshold != null ) {
+//			Event event = (Event)eventMap.get( eventName );
+//			if ( event == null ) {
+//				event = new Event( eventName );
+//				eventMap.put( eventName, event );
+//			}
+//			// increment
+//			event.increment(threshold.count, threshold.interval);
+//		}
+//	}
 
     private static class Event {
         public String key;

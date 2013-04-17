@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.logging.Level;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpSession;
 
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.LogFactory;
 import org.owasp.esapi.Logger;
-import org.owasp.esapi.User;
+//import org.owasp.esapi.User;
 
 /**
  * Reference implementation of the LogFactory and Logger interfaces. This implementation uses the Java logging package, and marks each
@@ -305,9 +305,9 @@ public class JavaLogFactory implements LogFactory {
 
 			// log server, port, app name, module name -- server:80/app/module
 			StringBuilder appInfo = new StringBuilder();
-			if ( ESAPI.currentRequest() != null && logServerIP ) {
-				appInfo.append( ESAPI.currentRequest().getLocalAddr() + ":" + ESAPI.currentRequest().getLocalPort() );
-			}
+//			if ( ESAPI.currentRequest() != null && logServerIP ) {
+//				appInfo.append( ESAPI.currentRequest().getLocalAddr() + ":" + ESAPI.currentRequest().getLocalPort() );
+//			}
 			if ( logAppName ) {
 				appInfo.append( "/" + applicationName );
 			}
@@ -368,26 +368,26 @@ public class JavaLogFactory implements LogFactory {
         public String getUserInfo() {
             // create a random session number for the user to represent the user's 'session', if it doesn't exist already
             String sid = null;
-            HttpServletRequest request = ESAPI.httpUtilities().getCurrentRequest();
-            if ( request != null ) {
-                HttpSession session = request.getSession( false );
-                if ( session != null ) {
-	                sid = (String)session.getAttribute("ESAPI_SESSION");
-	                // if there is no session ID for the user yet, we create one and store it in the user's session
-		            if ( sid == null ) {
-		            	sid = ""+ ESAPI.randomizer().getRandomInteger(0, 1000000);
-		            	session.setAttribute("ESAPI_SESSION", sid);
-		            }
-                }
-            }
+//            HttpServletRequest request = ESAPI.httpUtilities().getCurrentRequest();
+//            if ( request != null ) {
+//                HttpSession session = request.getSession( false );
+//                if ( session != null ) {
+//	                sid = (String)session.getAttribute("ESAPI_SESSION");
+//	                // if there is no session ID for the user yet, we create one and store it in the user's session
+//		            if ( sid == null ) {
+//		            	sid = ""+ ESAPI.randomizer().getRandomInteger(0, 1000000);
+//		            	session.setAttribute("ESAPI_SESSION", sid);
+//		            }
+//                }
+//            }
             
 			// log user information - username:session@ipaddr
-			User user = ESAPI.authenticator().getCurrentUser();            
+//			User user = ESAPI.authenticator().getCurrentUser();            
 			String userInfo = "";
 			//TODO - Make Type Logging configurable
-			if ( user != null) {
-				userInfo += user.getAccountName()+ ":" + sid + "@"+ user.getLastHostAddress();
-			}
+//			if ( user != null) {
+//				userInfo += user.getAccountName()+ ":" + sid + "@"+ user.getLastHostAddress();
+//			}
 			
 			return userInfo;
         }

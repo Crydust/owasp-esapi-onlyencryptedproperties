@@ -730,6 +730,7 @@ public class DefaultSecurityConfiguration implements SecurityConfiguration {
     /**
      * {@inheritDoc}
      */
+    @Deprecated
     public String setCipherTransformation(String cipherXform) {
     	String previous = getCipherTransformation();
     	if ( cipherXform == null ) {

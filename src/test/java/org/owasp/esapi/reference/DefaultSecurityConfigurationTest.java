@@ -1,6 +1,6 @@
 package org.owasp.esapi.reference;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.junit.Test;
 import org.owasp.esapi.ESAPI;

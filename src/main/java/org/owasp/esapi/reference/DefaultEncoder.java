@@ -27,13 +27,13 @@ import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.Encoder;
 import org.owasp.esapi.Logger;
 import org.owasp.esapi.codecs.Base64;
-import org.owasp.esapi.codecs.CSSCodec;
+//import org.owasp.esapi.codecs.CSSCodec;
 import org.owasp.esapi.codecs.Codec;
-import org.owasp.esapi.codecs.HTMLEntityCodec;
-import org.owasp.esapi.codecs.JavaScriptCodec;
-import org.owasp.esapi.codecs.PercentCodec;
-import org.owasp.esapi.codecs.VBScriptCodec;
-import org.owasp.esapi.codecs.XMLEntityCodec;
+//import org.owasp.esapi.codecs.HTMLEntityCodec;
+//import org.owasp.esapi.codecs.JavaScriptCodec;
+//import org.owasp.esapi.codecs.PercentCodec;
+//import org.owasp.esapi.codecs.VBScriptCodec;
+//import org.owasp.esapi.codecs.XMLEntityCodec;
 import org.owasp.esapi.errors.EncodingException;
 import org.owasp.esapi.errors.IntrusionException;
 
@@ -65,12 +65,12 @@ public class DefaultEncoder implements Encoder {
 
 	// Codecs
 	private List codecs = new ArrayList();
-	private HTMLEntityCodec htmlCodec = new HTMLEntityCodec();
-	private XMLEntityCodec xmlCodec = new XMLEntityCodec();
-	private PercentCodec percentCodec = new PercentCodec();
-	private JavaScriptCodec javaScriptCodec = new JavaScriptCodec();
-	private VBScriptCodec vbScriptCodec = new VBScriptCodec();
-	private CSSCodec cssCodec = new CSSCodec();
+//	private HTMLEntityCodec htmlCodec = new HTMLEntityCodec();
+//	private XMLEntityCodec xmlCodec = new XMLEntityCodec();
+//	private PercentCodec percentCodec = new PercentCodec();
+//	private JavaScriptCodec javaScriptCodec = new JavaScriptCodec();
+//	private VBScriptCodec vbScriptCodec = new VBScriptCodec();
+//	private CSSCodec cssCodec = new CSSCodec();
 
 	private final Logger logger = ESAPI.getLogger("Encoder");
 	
@@ -94,9 +94,9 @@ public class DefaultEncoder implements Encoder {
 	 * Instantiates a new DefaultEncoder
 	 */
 	private DefaultEncoder() {
-		codecs.add( htmlCodec );
-		codecs.add( percentCodec );
-		codecs.add( javaScriptCodec );
+//		codecs.add( htmlCodec );
+//		codecs.add( percentCodec );
+//		codecs.add( javaScriptCodec );
 	}
 	
 	public DefaultEncoder( List<String> codecNames ) {
@@ -192,80 +192,80 @@ public class DefaultEncoder implements Encoder {
         }
         return working;
 	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public String encodeForHTML(String input) {
-	    if( input == null ) {
-	    	return null;
-	    }
-	    return htmlCodec.encode( IMMUNE_HTML, input);	    
-	 }
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public String decodeForHTML(String input) {
-		
-		if( input == null ) {
-	    	return null;
-	    }
-	    return htmlCodec.decode( input);	 
-    }
-	 
-	/**
-	 * {@inheritDoc}
-	 */
-	public String encodeForHTMLAttribute(String input) {
-	    if( input == null ) {
-	    	return null;
-	    }
-	    return htmlCodec.encode( IMMUNE_HTMLATTR, input);
-	}
-
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public String encodeForCSS(String input) {
-	    if( input == null ) {
-	    	return null;
-	    }
-	    return cssCodec.encode( IMMUNE_CSS, input);
-	}
-
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public String encodeForJavaScript(String input) {
-	    if( input == null ) {
-	    	return null;
-	    }
-	    return javaScriptCodec.encode(IMMUNE_JAVASCRIPT, input);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public String encodeForVBScript(String input) {
-	    if( input == null ) {
-	    	return null;
-	    }
-	    return vbScriptCodec.encode(IMMUNE_VBSCRIPT, input);	    
-	}
-
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public String encodeForSQL(Codec codec, String input) {
-	    if( input == null ) {
-	    	return null;
-	    }
-	    return codec.encode(IMMUNE_SQL, input);
-	}
+//
+//	/**
+//	 * {@inheritDoc}
+//	 */
+//	public String encodeForHTML(String input) {
+//	    if( input == null ) {
+//	    	return null;
+//	    }
+//	    return htmlCodec.encode( IMMUNE_HTML, input);	    
+//	 }
+//	
+//	/**
+//	 * {@inheritDoc}
+//	 */
+//	public String decodeForHTML(String input) {
+//		
+//		if( input == null ) {
+//	    	return null;
+//	    }
+//	    return htmlCodec.decode( input);	 
+//    }
+//	 
+//	/**
+//	 * {@inheritDoc}
+//	 */
+//	public String encodeForHTMLAttribute(String input) {
+//	    if( input == null ) {
+//	    	return null;
+//	    }
+//	    return htmlCodec.encode( IMMUNE_HTMLATTR, input);
+//	}
+//
+//	
+//	/**
+//	 * {@inheritDoc}
+//	 */
+//	public String encodeForCSS(String input) {
+//	    if( input == null ) {
+//	    	return null;
+//	    }
+//	    return cssCodec.encode( IMMUNE_CSS, input);
+//	}
+//
+//	
+//	/**
+//	 * {@inheritDoc}
+//	 */
+//	public String encodeForJavaScript(String input) {
+//	    if( input == null ) {
+//	    	return null;
+//	    }
+//	    return javaScriptCodec.encode(IMMUNE_JAVASCRIPT, input);
+//	}
+//
+//	/**
+//	 * {@inheritDoc}
+//	 */
+//	public String encodeForVBScript(String input) {
+//	    if( input == null ) {
+//	    	return null;
+//	    }
+//	    return vbScriptCodec.encode(IMMUNE_VBSCRIPT, input);	    
+//	}
+//
+//	
+//	/**
+//	 * {@inheritDoc}
+//	 */
+//	public String encodeForSQL(Codec codec, String input) {
+//	    if( input == null ) {
+//	    	return null;
+//	    }
+//	    return codec.encode(IMMUNE_SQL, input);
+//	}
 
 	/**
 	 * {@inheritDoc}
@@ -357,37 +357,37 @@ public class DefaultEncoder implements Encoder {
 		}
 		return sb.toString();
 	}
-
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public String encodeForXPath(String input) {
-	    if( input == null ) {
-	    	return null;	
-	    }
-	    return htmlCodec.encode( IMMUNE_XPATH, input);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public String encodeForXML(String input) {
-	    if( input == null ) {
-	    	return null;	
-	    }
-	    return xmlCodec.encode( IMMUNE_XML, input);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public String encodeForXMLAttribute(String input) {
-	    if( input == null ) {
-	    	return null;	
-	    }
-	    return xmlCodec.encode( IMMUNE_XMLATTR, input);
-	}
+//
+//
+//	/**
+//	 * {@inheritDoc}
+//	 */
+//	public String encodeForXPath(String input) {
+//	    if( input == null ) {
+//	    	return null;	
+//	    }
+//	    return htmlCodec.encode( IMMUNE_XPATH, input);
+//	}
+//
+//	/**
+//	 * {@inheritDoc}
+//	 */
+//	public String encodeForXML(String input) {
+//	    if( input == null ) {
+//	    	return null;	
+//	    }
+//	    return xmlCodec.encode( IMMUNE_XML, input);
+//	}
+//
+//	/**
+//	 * {@inheritDoc}
+//	 */
+//	public String encodeForXMLAttribute(String input) {
+//	    if( input == null ) {
+//	    	return null;	
+//	    }
+//	    return xmlCodec.encode( IMMUNE_XMLATTR, input);
+//	}
 
 	/**
 	 * {@inheritDoc}
@@ -445,4 +445,44 @@ public class DefaultEncoder implements Encoder {
 		}
 		return Base64.decode( input );
 	}
+
+    public String encodeForCSS(String input) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String encodeForHTML(String input) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String decodeForHTML(String input) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String encodeForHTMLAttribute(String input) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String encodeForJavaScript(String input) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String encodeForVBScript(String input) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String encodeForSQL(Codec codec, String input) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String encodeForXPath(String input) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String encodeForXML(String input) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String encodeForXMLAttribute(String input) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

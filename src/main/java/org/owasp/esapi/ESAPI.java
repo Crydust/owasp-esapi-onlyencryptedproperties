@@ -16,8 +16,8 @@
  */
 package org.owasp.esapi;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
 
 import org.owasp.esapi.util.ObjFactory;
 
@@ -34,63 +34,63 @@ public final class ESAPI {
 	private ESAPI() {
 	}
 	
-    /**
-	 * Clears the current User, HttpRequest, and HttpResponse associated with the current thread. This method
-	 * MUST be called as some containers do not properly clear threadlocal variables when the execution of
-	 * a thread is complete. The suggested approach is to put this call in a finally block inside a filter.
-	 * <pre>
-		public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException {
-			try {
-				HttpServletRequest request = (HttpServletRequest) req;
-				HttpServletResponse response = (HttpServletResponse) resp;
-				ESAPI.httpUtilities().setCurrentHTTP(request, response);
-				ESAPI.authenticator().login();
-				chain.doFilter(request, response);
-			} catch (Exception e) {
-				logger.error( Logger.SECURITY_FAILURE, "Error in ESAPI security filter: " + e.getMessage(), e );
-			} finally {
-				// VERY IMPORTANT
-				// clear out ThreadLocal variables
-				ESAPI.clearCurrent();
-			}
-		}
-	 * </pre>
-	 * The advantages of having identity everywhere are worth the risk here.
-	 */
-	public static void clearCurrent() {
-		authenticator().clearCurrent();
-		httpUtilities().clearCurrent();
-	}
-
-	/**
-	 * Get the current HTTP Servlet Request being processed.
-	 * @return the current HTTP Servlet Request.
-	 */
-	public static HttpServletRequest currentRequest() {
-		return httpUtilities().getCurrentRequest();
-	}
+//    /**
+//	 * Clears the current User, HttpRequest, and HttpResponse associated with the current thread. This method
+//	 * MUST be called as some containers do not properly clear threadlocal variables when the execution of
+//	 * a thread is complete. The suggested approach is to put this call in a finally block inside a filter.
+//	 * <pre>
+//		public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException {
+//			try {
+//				HttpServletRequest request = (HttpServletRequest) req;
+//				HttpServletResponse response = (HttpServletResponse) resp;
+//				ESAPI.httpUtilities().setCurrentHTTP(request, response);
+//				ESAPI.authenticator().login();
+//				chain.doFilter(request, response);
+//			} catch (Exception e) {
+//				logger.error( Logger.SECURITY_FAILURE, "Error in ESAPI security filter: " + e.getMessage(), e );
+//			} finally {
+//				// VERY IMPORTANT
+//				// clear out ThreadLocal variables
+//				ESAPI.clearCurrent();
+//			}
+//		}
+//	 * </pre>
+//	 * The advantages of having identity everywhere are worth the risk here.
+//	 */
+//	public static void clearCurrent() {
+//		authenticator().clearCurrent();
+//		httpUtilities().clearCurrent();
+//	}
+//
+//	/**
+//	 * Get the current HTTP Servlet Request being processed.
+//	 * @return the current HTTP Servlet Request.
+//	 */
+//	public static HttpServletRequest currentRequest() {
+//		return httpUtilities().getCurrentRequest();
+//	}
+//	
+//	/**
+//	 * Get the current HTTP Servlet Response being generated.
+//	 * @return the current HTTP Servlet Response.
+//	 */
+//	public static HttpServletResponse currentResponse() {
+//		return httpUtilities().getCurrentResponse();
+//	}
 	
-	/**
-	 * Get the current HTTP Servlet Response being generated.
-	 * @return the current HTTP Servlet Response.
-	 */
-	public static HttpServletResponse currentResponse() {
-		return httpUtilities().getCurrentResponse();
-	}
-	
-	/**
-	 * @return the current ESAPI AccessController object being used to maintain the access control rules for this application. 
-	 */
-	public static AccessController accessController() {
-        return ObjFactory.make( securityConfiguration().getAccessControlImplementation(), "AccessController" );
-	}
-
-	/**
-	 * @return the current ESAPI Authenticator object being used to authenticate users for this application. 
-	 */
-	public static Authenticator authenticator() {
-        return ObjFactory.make( securityConfiguration().getAuthenticationImplementation(), "Authenticator" );
-	}
+//	/**
+//	 * @return the current ESAPI AccessController object being used to maintain the access control rules for this application. 
+//	 */
+//	public static AccessController accessController() {
+//        return ObjFactory.make( securityConfiguration().getAccessControlImplementation(), "AccessController" );
+//	}
+//
+//	/**
+//	 * @return the current ESAPI Authenticator object being used to authenticate users for this application. 
+//	 */
+//	public static Authenticator authenticator() {
+//        return ObjFactory.make( securityConfiguration().getAuthenticationImplementation(), "Authenticator" );
+//	}
 
 	/**
 	 * @return the current ESAPI Encoder object being used to encode and decode data for this application. 
@@ -106,20 +106,20 @@ public final class ESAPI {
         return ObjFactory.make( securityConfiguration().getEncryptionImplementation(), "Encryptor" );
 	}
 
-	/**
-	 * @return the current ESAPI Executor object being used to safely execute OS commands for this application. 
-	 */
-	public static Executor executor() {
-        return ObjFactory.make( securityConfiguration().getExecutorImplementation(), "Executor" );
-	}
-
-	/**
-	 * @return the current ESAPI HTTPUtilities object being used to safely access HTTP requests and responses 
-	 * for this application. 
-	 */
-	public static HTTPUtilities httpUtilities() {
-        return ObjFactory.make( securityConfiguration().getHTTPUtilitiesImplementation(), "HTTPUtilities" );
-	}
+//	/**
+//	 * @return the current ESAPI Executor object being used to safely execute OS commands for this application. 
+//	 */
+//	public static Executor executor() {
+//        return ObjFactory.make( securityConfiguration().getExecutorImplementation(), "Executor" );
+//	}
+//
+//	/**
+//	 * @return the current ESAPI HTTPUtilities object being used to safely access HTTP requests and responses 
+//	 * for this application. 
+//	 */
+//	public static HTTPUtilities httpUtilities() {
+//        return ObjFactory.make( securityConfiguration().getHTTPUtilitiesImplementation(), "HTTPUtilities" );
+//	}
 
 	/**
 	 * @return the current ESAPI IntrusionDetector being used to monitor for intrusions in this application. 
@@ -184,12 +184,12 @@ public final class ESAPI {
         return ObjFactory.make( securityConfigurationImplName, "SecurityConfiguration" );
 	}
 
-	/**
-	 * @return the current ESAPI Validator being used to validate data in this application. 
-	 */
-	public static Validator validator() {
-        return ObjFactory.make( securityConfiguration().getValidationImplementation(), "Validator" );
-	}
+//	/**
+//	 * @return the current ESAPI Validator being used to validate data in this application. 
+//	 */
+//	public static Validator validator() {
+//        return ObjFactory.make( securityConfiguration().getValidationImplementation(), "Validator" );
+//	}
 
     // TODO: This should probably use the SecurityManager or some value within the current
     // securityConfiguration to determine if this method is allowed to be called. This could
