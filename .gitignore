@@ -1,1 +1,4 @@
 target/
+/test.out
+/ReferenceEncryptedProperties.test.txt
+/ciphertext-portable.ser
