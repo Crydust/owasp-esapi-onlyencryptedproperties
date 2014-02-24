@@ -130,7 +130,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <netbeans.hint.jdkPlatform>JDK_1.5</netbeans.hint.jdkPlatform>
-        <java.5.libdir>D:/opt/Java/jdk1.5.0_22/jre/lib</java.5.libdir>
+        <!--<java.5.libdir>D:/opt/Java/jdk1.5.0_22/jre/lib</java.5.libdir>-->
     </properties>
 
     <dependencies>
